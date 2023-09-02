@@ -1,0 +1,71 @@
+/*********************************/
+/* ROOT & VARIABLES **************/
+/*********************************/
+:root {
+  --transition-duration: 0.08s;
+
+  /* window */
+  --edge-margin: 3px; /* so that use has an easier time dragging edges of window. */
+  --edge-overflow: 2px; /* hopefully counteracts cursor flicker. */
+
+  /* titlebar */
+  --titlebar-height: 30px;
+  --titlebar-button-count: 3;
+  --titlebar-button-padding: 1px;
+  --titlebar-button-width: 44px;
+  --titlebar-button-height: calc(var(--titlebar-button-height) - var(--titlebar-button-padding) * 2);
+
+  /* statusbar */
+  --statusbar-height: 28px;
+  --statusbar-spacing: 6px;
+  --statusbar-context-spacing: 4px;
+  --statusbar-context-shortcut-padding: 4px 4px 3px 4px; /* t r b l */
+  --statusbar-context-shortcut-border-radius: 1px;
+
+  /* calculated */
+  --calc-titlebar-buttons-width: calc(var(--titlebar-button-width) * var(--titlebar-button-count) + var(--titlebar-button-padding) * 2);
+  --calc-edge-size: calc(var(--edge-margin) + var(--edge-overflow));
+  --calc-edge-negative-overflow: calc(var(--edge-overflow) * -1);
+}
+
+
+
+/*********************************/
+/* APP ***************************/
+/*********************************/
+#app {
+  overflow: hidden;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: var(--color-primary);
+
+  transition-duration: var(--transition-duration);
+  transition-property: background-color;
+
+  font-family: "Courier Prime";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.container {
+  position: relative;
+
+  width: 100vw;
+  height: calc(100vh - var(--titlebar-height) - var(--statusbar-height));
+}
+
+
+
+/*********************************/
+/* GLOBALS ***********************/
+/*********************************/
+button {
+  user-select: none;
+}
+
+.container button {
+  cursor: pointer;
+}

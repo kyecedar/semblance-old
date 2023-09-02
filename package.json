@@ -10,14 +10,22 @@
     "tauri": "tauri"
   },
   "dependencies": {
-    "vue": "^3.3.4",
-    "@tauri-apps/api": "^1.4.0"
+    "@mediapipe/face_detection": "^0.4.1646425229",
+    "@mediapipe/face_mesh": "^0.4.1633559619",
+    "@tauri-apps/api": "^1.4.0",
+    "@tensorflow-models/face-detection": "^1.0.2",
+    "@tensorflow-models/face-landmarks-detection": "^1.0.5",
+    "@tensorflow/tfjs-backend-webgl": "^4.10.0",
+    "@tensorflow/tfjs-converter": "^4.10.0",
+    "@tensorflow/tfjs-core": "^4.10.0",
+    "tauri-plugin-store-api": "https://github.com/tauri-apps/tauri-plugin-store#v1",
+    "vue": "^3.3.4"
   },
   "devDependencies": {
+    "@tauri-apps/cli": "^1.4.0",
     "@vitejs/plugin-vue": "^4.2.3",
     "typescript": "^5.0.2",
     "vite": "^4.4.4",
-    "vue-tsc": "^1.8.5",
-    "@tauri-apps/cli": "^1.4.0"
+    "vue-tsc": "^1.8.5"
   }
 }

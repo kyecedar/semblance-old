@@ -1,52 +1,63 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import Greet from "./components/Greet.vue";
+
+import { onMounted, ref, Ref } from "vue";
+import { appWindow } from "@tauri-apps/api/window";
+
+
+
+// globals.
+declare global {
+  interface Window {
+    terminal_loaded: boolean,
+    context_name: Ref<String>,
+    context_shortcut: Ref<String>,
+  }
+}
+
+window.terminal_loaded = false;
+window.context_name = ref("");
+window.context_shortcut = ref("");
+
+
+
+// lib imports.
+
+import { scanForContext } from "./lib/context";
+
+
+// modules.
+//import { Store } from "tauri-plugin-store-api";
+import EdgeMargins from "./components/window/EdgeMargins.vue";
+import Titlebar from "./components/window/Titlebar.vue";
+import Statusbar from "./components/window/Statusbar.vue";
+
+//import TestFaceTracking from "./components/TestFaceTracking.vue";
+
+//const window_close_icon_fill = ref("#00ff00");
+
+//const store = new Store(".settings.dat");
+
+
+
+
+addEventListener("mouseover", scanForContext);
+
+
+
+// show window on load.
+onMounted(() => {
+  appWindow.show();
+});
 </script>
 
+
+
 <template>
+  <EdgeMargins />
+  <Titlebar />
+  
   <div class="container">
-    <h1>Welcome to Tauri!</h1>
-
-    <div class="row">
-      <a href="https://vitejs.dev" target="_blank">
-        <img src="/vite.svg" class="logo vite" alt="Vite logo" />
-      </a>
-      <a href="https://tauri.app" target="_blank">
-        <img src="/tauri.svg" class="logo tauri" alt="Tauri logo" />
-      </a>
-      <a href="https://vuejs.org/" target="_blank">
-        <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-      </a>
-    </div>
-
-    <p>Click on the Tauri, Vite, and Vue logos to learn more.</p>
-
-    <p>
-      Recommended IDE setup:
-      <a href="https://code.visualstudio.com/" target="_blank">VS Code</a>
-      +
-      <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-      +
-      <a href="https://github.com/tauri-apps/tauri-vscode" target="_blank"
-        >Tauri</a
-      >
-      +
-      <a href="https://github.com/rust-lang/rust-analyzer" target="_blank"
-        >rust-analyzer</a
-      >
-    </p>
-
-    <Greet />
   </div>
+
+  <Statusbar />
 </template>
-
-<style scoped>
-.logo.vite:hover {
-  filter: drop-shadow(0 0 2em #747bff);
-}
-
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #249b73);
-}
-</style>

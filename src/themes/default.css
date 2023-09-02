@@ -1,0 +1,90 @@
+/*********************************/
+/* VARIABLES *********************/
+/*********************************/
+:root {
+  --color-dark: #00121D;
+  --color-dark-kinda: #24373D;
+  --color-light: #FFFFFF;
+  --color-light-kinda: #C2D9DB;
+  --color-red: #ED135A;
+  --color-orange: #F26521;
+  --color-yellow: #FFC20D;
+  --color-green: #00A775;
+  --color-blue: #0071BC;
+  --color-purple: #662C91;
+
+  --color-fail: var(--color-red);
+
+  --color-primary: var(--color-light);
+  --color-primary-kinda: var(--color-light-kinda);
+  --color-secondary: var(--color-dark);
+  --color-secondary-kinda: var(--color-dark-kinda);
+}
+
+:root[theme="dark"] {
+  --color-primary: var(--color-dark);
+  --color-primary-kinda: var(--color-dark-kinda);
+  --color-secondary: var(--color-light);
+  --color-secondary-kinda: var(--color-light-kinda);
+}
+
+/* so that when user resizes the window, it doesn't show just a white background at the edges while they're dragging. */
+:root {
+  background-color: var(--color-primary);
+}
+
+
+
+/*********************************/
+/* APP ***************************/
+/*********************************/
+#app {
+  color: var(--color-secondary);
+}
+
+
+
+/*********************************/
+/* TITLEBAR **********************/
+/*********************************/
+.titlebar-button {
+  color: var(--color-secondary);
+  background-color: var(--color-primary);
+}
+
+.titlebar-button:hover {
+  color: var(--color-secondary);
+  background-color: var(--color-primary-kinda);
+}
+
+.titlebar-button.close:hover {
+  color: var(--color-light);
+  background-color: var(--color-red);
+}
+
+
+
+/*********************************/
+/* STATUSBAR *********************/
+/*********************************/
+.statusbar {
+  box-sizing: border-box;
+  border-top: 1px solid var(--color-primary-kinda);
+  color: var(--color-secondary-kinda);
+}
+
+.statusbar .context .context-shortcut {
+  border: 1px solid var(--color-primary-kinda);
+}
+
+.statusbar button svg {
+  color: var(--color-secondary-kinda);
+}
+
+.statusbar button:hover {
+  background-color: var(--color-primary-kinda);
+}
+
+.statusbar button:hover svg {
+  color: var(--color-secondary); 
+}
